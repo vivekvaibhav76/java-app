@@ -1,2 +1,4 @@
-# java-app
-test java app for CI/CD demo
+java-hello-world-webapp
+=======================
+
+A simple java web app

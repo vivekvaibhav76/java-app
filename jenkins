@@ -1,0 +1,70 @@
+node{
+   
+def gitrepo = "pooja24n/java-app"  
+def mavenHome =  tool name: "Maven-3.6.1", type: "maven"
+def mavenCMD = "${mavenHome}/bin/mvn"
+def dockeruname = "pooja24n"
+     
+    stage('GIT CLONE'){
+        git branch: 'master', url: " https://github.com/${gitrepo}.git "
+    }
+   
+    stage(" Maven Clean Package"){
+     
+      sh "${mavenCMD} clean package"
+    }
+    
+    stage ('Upload file') {
+                rtUpload (
+                    serverId: SERVER_ID,
+                    spec: """{
+                            "files": [
+                                    {
+                                        "pattern": "java-app/resource/ArtifactoryPipeline.zip",
+                                        "target": "example-repo-local"
+                                    }
+                                ]
+                            }"""
+                )
+    }
+
+    stage ('Publish build info') {
+                rtPublishBuildInfo (
+                    serverId: SERVER_ID
+                )
+    }
+
+    stage ('Set output resources') {
+                jfPipelines(
+                    outputResources: """[
+                        {
+                            "name": "pipelinesBuildInfo",
+                            "content": {
+                                "buildName": "${env.JOB_NAME}",
+                                "buildNumber": "${env.BUILD_NUMBER}"
+                            }
+                        }
+                    ]"""
+                )
+    }
+     
+    stage('SonarQube Analysis') {
+        withSonarQubeEnv('Sonarqube') { 
+          sh "${mavenHome}/bin/mvn sonar:sonar"
+        }
+    }
+      
+    stage("Quality Gate") {
+              timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: true
+            }
+    }
+            
+    stage('Build Docker Image'){
+        sh "docker build -t ${dockeruname}/petclinic ."
+    }
+    stage('Push Docker Image'){
+        sh 'docker login -u pooja24n -p Cindazzler@24'
+        sh "docker push ${dockeruname}/petclinic18 "
+    }
+}

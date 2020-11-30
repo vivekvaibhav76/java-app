@@ -35,8 +35,8 @@ spec:
             name: mysql-user-creds
        volumeMounts:
           - name: petclinic-config
-            mountPath: "/etc/mysql/conf.d/"
-      volumes:
+            mountPath: "/etc/mysql/conf.d"
+     volumes:
       - configMap:
           name: petclinic-config
           items:

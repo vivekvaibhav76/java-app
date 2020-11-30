@@ -24,6 +24,25 @@ spec:
        image: pooja24n/petclinic
        ports:
         - containerPort: 8080
+       env:
+         - name: MYSQL_ROOT_PASSWORD
+           valueFrom:
+              secretKeyRef:
+                name: mysql-root-password
+                key: password
+       envFrom:
+        - secretRef:
+            name: mysql-user-creds
+       volumeMounts:
+          - name: petclinic-config
+            mountPath: "/etc/mysql/conf.d"
+      volumes:
+      - configMap:
+          name: petclinic-config
+          items:
+            - key: max_allowed_packet.cnf
+              path: max_allowed_packet.cnf
+        name: petclinic-config
         
         
         

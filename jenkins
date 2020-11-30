@@ -13,7 +13,6 @@ def dockeruname = "pooja24n"
      
       sh "${mavenCMD} clean package"
     }
-    
     stage ('Upload file') {
                 rtUpload (
                     serverId: SERVER_ID,
@@ -47,24 +46,23 @@ def dockeruname = "pooja24n"
                     ]"""
                 )
     }
-     
-    stage('SonarQube Analysis') {
+     stage('SonarQube Analysis') {
         withSonarQubeEnv('Sonarqube') { 
           sh "${mavenHome}/bin/mvn sonar:sonar"
         }
     }
-      
-    stage("Quality Gate") {
-              timeout(time: 1, unit: 'HOURS') {
-                waitForQualityGate abortPipeline: true
-            }
-    }
-            
+    
     stage('Build Docker Image'){
         sh "docker build -t ${dockeruname}/petclinic ."
     }
     stage('Push Docker Image'){
         sh 'docker login -u pooja24n -p Cindazzler@24'
-        sh "docker push ${dockeruname}/petclinic18 "
+        sh "docker push ${dockeruname}/petclinic "
+    }
+    stage('Deploy to kubernetes'){
+        sh 'gcloud auth activate-service-account kubernetes@kubernetes-296910.iam.gserviceaccount.com --key-file=kubernetes-296910-3ada7c304e66.json'
+        sh 'gcloud container clusters get-credentials kubernetes-clone-1 --zone us-central1-c --project kubernetes-296910'
+        sh 'kubectl apply -f Deployment.yml'
+       
     }
 }

@@ -429,7 +429,6 @@
    </profiles>
 
     <url>demopetclinic</url>
-
    <distributionManagement>
     <repository>
         <id>central</id>
@@ -437,5 +436,4 @@
         <url>http://35.232.142.33:8081/artifactory/libs-release</url>
     </repository>
 </distributionManagement>
-
 </project>

@@ -39,7 +39,7 @@
         <dandelion.version>1.1.1</dandelion.version>
         <dandelion.datatables.version>1.1.0</dandelion.datatables.version>
 
-        <cobertura.version>3.1</cobertura.version>
+        <cobertura.version>3.6</cobertura.version>
 
     </properties>
 

@@ -6,7 +6,6 @@ def mavenCMD = "${mavenHome}/bin/mvn"
 def dockeruname = "pooja24n"
 def pattern = "java-app/resource/ArtifactoryPipeline.zip"
 def target = "example-repo-local"
-def sonarqube = "Sonarqube"
 def imagename = "petclinic"
 def serviceacc = "kubernetes@kubernetes-296910.iam.gserviceaccount.com"
 def keyfile = "kubernetes-296910-3ada7c304e66.json"
@@ -39,7 +38,7 @@ def zone = "us-central1-c"
 
     stage ('Publish build info') {
                 rtPublishBuildInfo (
-           imagename         serverId: SERVER_ID
+                 serverId: SERVER_ID
                 )
     }
 
@@ -57,7 +56,7 @@ def zone = "us-central1-c"
                 )
     }
      stage('SonarQube Analysis') {
-        withSonarQubeEnv('${Sonarqube}') { 
+        withSonarQubeEnv('Sonarqube') { 
           sh "${mavenHome}/bin/mvn sonar:sonar"
         }
     }

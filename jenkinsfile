@@ -4,6 +4,16 @@ def gitrepo = "pooja24n/java-app"
 def mavenHome =  tool name: "Maven-3.6.1", type: "maven"
 def mavenCMD = "${mavenHome}/bin/mvn"
 def dockeruname = "pooja24n"
+def pattern = "java-app/resource/ArtifactoryPipeline.zip"
+def target = "example-repo-local"
+def sonarqube = "sonarqube"
+def imagename = "petclinic"
+def serviceacc = "kubernetes@kubernetes-296910.iam.gserviceaccount.com"
+def keyfile = "kubernetes-296910-3ada7c304e66.json"
+def clustername = "kubernetes-clone-1"
+def projectid = "kubernetes-296910"
+def zone = "us-central1-c"
+
      
     stage('GIT CLONE'){
         git branch: 'master', url: " https://github.com/${gitrepo}.git "
@@ -19,8 +29,8 @@ def dockeruname = "pooja24n"
                     spec: """{
                             "files": [
                                     {
-                                        "pattern": "java-app/resource/ArtifactoryPipeline.zip",
-                                        "target": "example-repo-local"
+                                        "pattern": "${pattern}",
+                                        "target": "${target}"
                                     }
                                 ]
                             }"""
@@ -29,7 +39,7 @@ def dockeruname = "pooja24n"
 
     stage ('Publish build info') {
                 rtPublishBuildInfo (
-                    serverId: SERVER_ID
+           imagename         serverId: SERVER_ID
                 )
     }
 
@@ -47,22 +57,22 @@ def dockeruname = "pooja24n"
                 )
     }
      stage('SonarQube Analysis') {
-        withSonarQubeEnv('Sonarqube') { 
+        withSonarQubeEnv('${Sonarqube}') { 
           sh "${mavenHome}/bin/mvn sonar:sonar"
         }
     }
     
     stage('Build Docker Image'){
-        sh "docker build -t ${dockeruname}/petclinic ."
+        sh "docker build -t ${dockeruname}/${imagename} ."
     }
     stage('Push Docker Image'){
         sh 'docker login -u pooja24n -p Cindazzler@24'
-        sh "docker push ${dockeruname}/petclinic "
+        sh "docker push ${dockeruname}/${imagename} "
     }
     stage('Deploy to kubernetes'){
-        sh 'gcloud auth activate-service-account kubernetes@kubernetes-296910.iam.gserviceaccount.com --key-file=kubernetes-296910-3ada7c304e66.json'
-        sh 'gcloud container clusters get-credentials kubernetes-clone-1 --zone us-central1-c --project kubernetes-296910'
-        sh 'kubectl apply -f Deployment.yml'
+        sh "gcloud auth activate-service-account ${serviceacc} --key-file=${keyfile}"
+        sh "gcloud container clusters get-credentials ${clustername} --zone ${zone} --project ${projectid}"
+        sh "kubectl apply -f Deployment.yml"
        
     }
 }

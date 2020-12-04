@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "prefab-mountain-297509",
+  "private_key_id": "3ba82b5d8b2c4909c7d41233d832b95ea945ee14",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC8WZczkVn3oFua\n9MX2KQ6VCDZGWQFNo6MK6bTduL8jOZFKdfZhHgkdzwyA6re/YXobttKdQSbrFLzu\nRnDlODmjTq8q6gZsbw6TDsvies3LMCNvrYtf2i6TCl9D92iuWrpFgrLARaBHkbtz\nWc1af2IgiwuGQq+zgY3d8rWztpHaUG5N6hUyagDzF8MM41cn/mpFDkqfZWNe5FLL\nO/XOfONsf0gmdllHHNvTiPwPo3Yf2Wmcyupr+6G0dfMX9o3LMs85h2IwBJhl1KTx\nj/9iuj0xV12qLK7IH81erCkWgqi7H0EN55LYUkqzJUuK/zrAmq82cLEgoQNfdUyU\nUbF+an8TAgMBAAECggEAT2CEb+ekXk82+/WHTkgcTKOS2A/flDxP1KQMpNqctvgm\napaPOHujhOwCzXvd52ppvy9L0JkqES2Ct/p4zqlk5RWejfvlrCIbps84DqEJhMWr\nUX/2enVlZnObFXY5qC01TmEX+x78vtzEfocMm8SOcr+WokUNbh29z5lfiTb6feHo\nSI32tg6flMie39O+TgpbL7zS1STxbwzpfzJwtovzf7bVRuLurJQOOdPmff3fF10L\noz3xAqk+OPY/SswyB1K4X/Nuzflb8YrRFA+3UXiaOr/enx88XexHWLzlUlEE2lVL\nJoE3A5y4gcH1zjIgViCuFLz1W6fVog+C3LCt+DVCMQKBgQD3isd7EAiBFOjvILHF\nL2kkM/lvoRo6rLwssiPYHrMNoDX04C1e1215vtcGlOKQ+0j09H0+2fImHFgHgUsx\nFX83rRk2aJRjS+TN/aBzuJ7HIVMVpoaWkrLmA6buUctwIbWKOUfnfrGlD6/+bwPV\nV65djhggLh8NFOoyV+/EpvNnIwKBgQDCyRCePX0xg80EZ1VXityttIEkcJD1APnC\nCkiBMACdCMRZr8DCMpjKzjyyOKsJ2FwFogcV+bmT0iwgg1gRzu3OvPWB2aGoRZmP\nTlrbOxrNHdvY6Lg3F0XJblf58evTHcxNVIVLdOFbLE2jrbdZTWwiTKKkRF9nv0AT\nqGRBOdn/UQKBgG3V1xMklxFnTL+luxsqITXeFeRREElOkaQnWr4vSPVXy/keayM0\n5S9q3Q/fifQYe1OtE9GKdOYyF2ElHk7mIe97T7+TgZvZdelsiwAtv83NXIczv24a\nI2Tp4+zEwEa9vkZZii0OSxZZMpbrfUDxSb3bKZtFu6NbT1sNJ6cTCNcPAoGAOvej\nkEQNInBEIJEnxNjE9dEvR1jMiV9CPPvf9zwQ83kz9/K86A1pM/w7Y7jEDrbxJMNo\nYb6374gw06bvgnSiiXOq3ySDS+3GDxwpZTT/aBkh9Qh+vC7Pcat19rTGL6NVthNg\nRvebQX6oAmUUnHRTyA5rLk+EkmPTgh/4OcbJuAECgYBkBqI6m5KCED7RLHD81ioI\n29YuT/JKrzoSf2PEbd0O4KFgPSb/FnqAuE2hMXZthUqK/u2RY63NaOmYpuJ4Q0jY\nBW1N17T0D12pqqWPJi5U12LxwxH/uctLEZPQTcRNWy4kj4EuvqofZlmqUOxYfAdV\ntY466k+tOwGBEMVgxFnkYw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "devpro@prefab-mountain-297509.iam.gserviceaccount.com",
+  "client_id": "110694508271571664177",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/devpro%40prefab-mountain-297509.iam.gserviceaccount.com"
+}

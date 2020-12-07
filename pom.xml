@@ -432,8 +432,13 @@
    <distributionManagement>
     <repository>
         <id>central</id>
-        <name>artifactory-sonar-releases</name>
-        <url>http://35.232.142.33:8081/artifactory/libs-release</url>
+        <name>artifactory-releases</name>
+        <url>http://34.70.70.150:8081/artifactory/libs-release</url>
     </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>artifactory-snapshots</name>
+        <url>http://34.70.70.150:8081/artifactory/libs-release</url>
+    </snapshotRepository>
 </distributionManagement>
 </project>

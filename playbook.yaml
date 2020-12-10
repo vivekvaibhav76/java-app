@@ -11,9 +11,6 @@
       url_username: admin
       url_password: vivek9060
 
-  - name: Rename .war Artifact
-    command: mv spring-petclinic-2.0-20201207.161559-2.war petclinic1.war
-
   - name: Log into DockerHub
     docker_login:
       username: "9060"
@@ -26,7 +23,7 @@
 
   - name: Build image and with build args
     docker_image:
-      name: petclinic1
+      name: spring-petclinic-2.0-20201207.161559-2
       build:
         path: target
         pull: no
@@ -35,7 +32,7 @@
  
   - name: Push to docker hub
     docker_image:
-      name: petclinic1
+      name: spring-petclinic-2.0-20201207.161559-2
       repository: 9060/petclinic:1.0
       push: yes
       source: local

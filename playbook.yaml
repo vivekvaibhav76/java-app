@@ -33,6 +33,6 @@
   - name: Push to docker hub
     docker_image:
       name: spring-petclinic-2.0-20201207.161559-2
-      repository: 9060/petclinic:1.0
+      repository: 9060/petclinic:2.0
       push: yes
       source: local
